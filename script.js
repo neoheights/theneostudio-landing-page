@@ -1,0 +1,279 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. UTM PARAMETER CAPTURE
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get('utm_source') || '';
+    const utmMedium = urlParams.get('utm_medium') || '';
+    const utmCampaign = urlParams.get('utm_campaign') || '';
+
+    // Inject into all form hidden fields
+    document.querySelectorAll('.utm_source').forEach(el => el.value = utmSource);
+    document.querySelectorAll('.utm_medium').forEach(el => el.value = utmMedium);
+    document.querySelectorAll('.utm_campaign').forEach(el => el.value = utmCampaign);
+    // Hero form specific IDs
+    if(document.getElementById('utm_source')) document.getElementById('utm_source').value = utmSource;
+    if(document.getElementById('utm_medium')) document.getElementById('utm_medium').value = utmMedium;
+    if(document.getElementById('utm_campaign')) document.getElementById('utm_campaign').value = utmCampaign;
+
+    // 2. GTM / DATA LAYER INITIALIZATION
+    window.dataLayer = window.dataLayer || [];
+
+    // 3. SCROLL DEPTH TRACKING
+    let scrollFlags = { 25: false, 50: false, 75: false, 100: false };
+    window.addEventListener('scroll', () => {
+        let scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+        [25, 50, 75, 100].forEach(mark => {
+            if (scrollPercent >= mark && !scrollFlags[mark]) {
+                scrollFlags[mark] = true;
+                window.dataLayer.push({
+                    'event': 'scroll_depth',
+                    'scroll_percentage': mark
+                });
+            }
+        });
+    });
+
+    // 4. CLICK TRACKING
+    document.querySelectorAll('.track-call').forEach(el => {
+        el.addEventListener('click', () => {
+            window.dataLayer.push({'event': 'mobile_bar_call_click'});
+        });
+    });
+
+    document.querySelectorAll('.track-whatsapp').forEach(el => {
+        el.addEventListener('click', () => {
+            window.dataLayer.push({'event': 'mobile_bar_whatsapp_click'});
+        });
+    });
+
+    document.querySelectorAll('.track-quote').forEach(el => {
+        el.addEventListener('click', () => {
+            window.dataLayer.push({'event': 'mobile_bar_quote_click'});
+        });
+    });
+
+    // 5. FORM SUBMISSION HANDLING (HERO & BOTTOM)
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const formId = e.target.id;
+        
+        // Push conversion event to GTM
+        window.dataLayer.push({
+            'event': 'form_submission',
+            'form_id': formId
+        });
+
+        // Show Success Modal
+        document.getElementById('success-modal').style.display = 'flex';
+        e.target.reset();
+    };
+
+    document.getElementById('hero-form').addEventListener('submit', handleFormSubmit);
+    if(document.getElementById('final-form')) document.getElementById('final-form').addEventListener('submit', handleFormSubmit);
+
+    // Global Modal Close
+    window.closeModal = () => {
+        document.getElementById('success-modal').style.display = 'none';
+    };
+
+    // 6. PORTFOLIO DATA & TABS
+    const portfolioData = [
+        // LIVING ROOM
+        { id: 1, category: 'Living Room', caption: 'Whitefield | 3BHK Apartment | 40 Days', img: 'hero_luxury_living_room_1775745353880.png' },
+        { id: 2, category: 'Living Room', caption: 'Koramangala | 3BHK Apartment | 42 Days', img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80' },
+        { id: 3, category: 'Living Room', caption: 'Jayanagar | 4BHK Villa | 45 Days', img: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800&q=80' },
+        { id: 4, category: 'Living Room', caption: 'Indiranagar | 3BHK Apartment | 35 Days', img: 'https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&q=80' },
+        { id: 5, category: 'Living Room', caption: 'Whitefield | 4BHK Villa | 50 Days', img: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80' },
+        { id: 6, category: 'Living Room', caption: 'HSR Layout | 3BHK Apartment | 40 Days', img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80' },
+
+        // BEDROOM
+        { id: 7, category: 'Bedroom', caption: 'Indiranagar | 4BHK Villa | 45 Days', img: 'modern_bedroom_interior_1775745376504.png' },
+        { id: 8, category: 'Bedroom', caption: 'Malleswaram | 3BHK Apartment | 30 Days', img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80' },
+        { id: 9, category: 'Bedroom', caption: 'Hebbal | 4BHK Duplex | 35 Days', img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800&q=80' },
+        { id: 10, category: 'Bedroom', caption: 'Bellandur | 3BHK Apartment | 30 Days', img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80' },
+        { id: 11, category: 'Bedroom', caption: 'JP Nagar | 3BHK Apartment | 28 Days', img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80' },
+        { id: 12, category: 'Bedroom', caption: 'Whitefield | Master Bedroom | 30 Days', img: 'https://images.unsplash.com/photo-1558211583-d26f610c1eb1?w=800&q=80' },
+
+        // KITCHEN
+        { id: 13, category: 'Kitchen', caption: 'HSR Layout | Modular Kitchen | 30 Days', img: 'modular_kitchen_interior_1775745393866.png' },
+        { id: 14, category: 'Kitchen', caption: 'Marathahalli | Modular Kitchen | 25 Days', img: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&q=80' },
+        { id: 15, category: 'Kitchen', caption: 'Bellandur | Open Kitchen Setup | 30 Days', img: 'https://images.unsplash.com/photo-1556185781-a47769abb7ee?w=800&q=80' },
+        { id: 16, category: 'Kitchen', caption: 'Yelahanka | Island Kitchen | 35 Days', img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80' },
+        { id: 17, category: 'Kitchen', caption: 'Sarjapur | Minimalist Kitchen | 20 Days', img: 'modular_kitchen_interior_1775745393866.png' },
+        { id: 18, category: 'Kitchen', caption: 'KR Puram | L-Shaped Kitchen | 25 Days', img: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&q=80' },
+
+        // BATHROOM
+        { id: 19, category: 'Bathroom', caption: 'Yeshwanthpur | Luxury Bath | 20 Days', img: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80' },
+        { id: 20, category: 'Bathroom', caption: 'RT Nagar | Master Bath | 22 Days', img: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80' },
+        { id: 21, category: 'Bathroom', caption: 'JP Nagar | Guest Bath | 18 Days', img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80' },
+        { id: 22, category: 'Bathroom', caption: 'Sahakar Nagar | Double Vanity | 25 Days', img: 'bt4.png' },
+        { id: 23, category: 'Bathroom', caption: 'Kengeri | Walk-in Shower | 20 Days', img: 'bt5.png' },
+        { id: 24, category: 'Bathroom', caption: 'BTM Layout | Modern Bath | 22 Days', img: 'bt6.png' },
+
+        // FULL HOME
+        { id: 25, category: 'Full Home', caption: 'Kanakapura | 3BHK Full Home | 45 Days', img: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80' },
+        { id: 26, category: 'Full Home', caption: 'Whitefield | 4BHK Duplex | 50 Days', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80' },
+        { id: 27, category: 'Full Home', caption: 'Sarjapur | 3BHK Apartment | 40 Days', img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80' },
+        { id: 28, category: 'Full Home', caption: 'Electronic City | 3BHK Villa | 45 Days', img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80' },
+        { id: 29, category: 'Full Home', caption: 'Majestic | 4BHK Renovation | 50 Days', img: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80' },
+        { id: 30, category: 'Full Home', caption: 'Banashankari | 3BHK Interiors | 42 Days', img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80' }
+    ];
+
+    const portfolioGrid = document.getElementById('portfolio-grid');
+    const tabs = document.querySelectorAll('.tab-btn');
+
+    function renderPortfolio(category = 'Living Room') {
+        portfolioGrid.innerHTML = '';
+        const filtered = category === 'All' ? portfolioData : portfolioData.filter(item => item.category === category);
+        
+        filtered.forEach((item) => {
+            const div = document.createElement('div');
+            div.className = 'portfolio-card fade-in active';
+            div.innerHTML = `
+                <img src="${item.img}" alt="${item.caption}">
+                <div class="card-overlay" onclick="openLightbox('${item.img}', '${item.caption}')">
+                    <p>${item.caption}</p>
+                </div>
+            `;
+            portfolioGrid.appendChild(div);
+        });
+    }
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            renderPortfolio(tab.dataset.category);
+        });
+    });
+
+    renderPortfolio('Living Room'); // Initial load
+
+    // 7. LIGHTBOX LOGIC
+    window.openLightbox = (imgSrc, captionTxt) => {
+        const lightbox = document.getElementById('lightbox');
+        document.getElementById('lightbox-img').src = imgSrc;
+        document.getElementById('lightbox-caption').innerText = captionTxt;
+        lightbox.style.display = 'flex';
+    };
+
+    window.closeLightbox = () => {
+        document.getElementById('lightbox').style.display = 'none';
+    };
+
+    // 8. TESTIMONIALS DATA & SLIDER
+    const testimonials = [
+        { 
+            name: "Ellappan S", 
+            area: "Bangalore", 
+            stars: "⭐⭐⭐⭐⭐", 
+            text: "I recently worked with The Neo Studio, and the experience has been nothing short of exceptional. From the very first consultation, the team demonstrated a rare combination of creativity, professionalism, and absolute transparency.",
+            img: "1.png"
+        },
+        { 
+            name: "Prasad Pai", 
+            area: "Bangalore", 
+            stars: "⭐⭐⭐⭐⭐", 
+            text: "I had a great experience working with The Neo Studio. The team is extremely professional, creative, and transparent throughout the entire design process. I’d definitely recommend them to anyone looking for a trustworthy and talented interior design team in Bangalore.",
+            img: "2.png"
+        },
+        { 
+            name: "Mathu Mathi", 
+            area: "Bangalore", 
+            stars: "⭐⭐⭐⭐⭐", 
+            text: "The Neo Studio impressed us with their attention to detail and design maturity. We appreciated how they balanced luxury with practicality, ensuring the space looked elegant but remained comfortable for everyday living.",
+            img: "3.png"
+        },
+        { 
+            name: "Harisshganth", 
+            area: "Bangalore", 
+            stars: "⭐⭐⭐⭐⭐", 
+            text: "Working with The Neo Studio has been a refreshing experience because of their complete transparency. What impressed me most was how they shared every stage of the project through their live-tracking app.",
+            img: "4.png"
+        }
+    ];
+
+    const slider = document.getElementById('testimonial-slider');
+    testimonials.forEach(t => {
+        const card = document.createElement('div');
+        card.className = 'testimonial-card';
+        card.innerHTML = `
+            <div class="review-image">
+                <img src="${t.img}" alt="${t.name}">
+            </div>
+            <div class="review-content">
+                <div class="rating">${t.stars}</div>
+                <p class="review-text">"${t.text}"</p>
+                <div class="review-author">
+                    <h5>${t.name}</h5>
+                    <span>${t.area}</span>
+                </div>
+            </div>
+        `;
+        slider.appendChild(card);
+    });
+
+    let currentSlide = 0;
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        if (currentSlide < testimonials.length - 1) currentSlide++;
+        else currentSlide = 0;
+        updateSlider();
+    });
+    
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        if (currentSlide > 0) currentSlide--;
+        else currentSlide = testimonials.length - 1;
+        updateSlider();
+    });
+
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    // 9. FAQ ACCORDION LOGIC
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        header.addEventListener('click', () => {
+            const currentlyExpanded = document.querySelector('.accordion-item.expanded');
+            if (currentlyExpanded && currentlyExpanded !== item) {
+                currentlyExpanded.classList.remove('expanded');
+            }
+            item.classList.toggle('expanded');
+        });
+    });
+
+    // 10. SCROLL REVEAL & STATS COUNTER ANIMATION
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                
+                // Animate Numbers
+                if (entry.target.classList.contains('counter') && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    const target = +entry.target.getAttribute('data-target');
+                    let count = 0;
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    
+                    const updateCount = () => {
+                        count += increment;
+                        const suffix = target === 45 ? '' : '+';
+                        if (count < target) {
+                            entry.target.innerText = Math.ceil(count).toLocaleString() + suffix;
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            entry.target.innerText = target.toLocaleString() + suffix;
+                        }
+                    };
+                    updateCount();
+                }
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.scroll-reveal, .fade-in, .fade-in-right, .counter').forEach(el => {
+        observer.observe(el);
+    });
+});
