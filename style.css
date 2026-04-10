@@ -15,11 +15,8 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { overflow-x: hidden; width: 100%; position: relative; }
 
 html {
     scroll-behavior: smooth;
@@ -528,14 +525,17 @@ h1, h2, h3, h4, h5 {
     .banner-content { flex-direction: column; gap: 20px; text-align: center; }
     .sticky-mobile-bar { display: flex; }
     .hero { padding-bottom: 120px; padding-top: 40px; } /* Space for sticky bar */
-    .hero h1 { font-size: 2.2rem; }
-    .hero h1.highlight { font-size: 2rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero h1.highlight { font-size: 1.8rem; }
     .hero-badges { justify-content: center; }
-    .hero-badge { font-size: 0.8rem; padding: 8px 12px; }
-    .tabs { flex-wrap: wrap; }
+    .hero-badge { font-size: 0.75rem; padding: 6px 10px; }
+    .form-container { padding: 30px 20px; margin: 0 10px; width: calc(100% - 20px); }
+    .testimonial-card { padding: 30px 20px; margin: 10px; gap: 20px; }
+    .review-text { font-size: 1.15rem; line-height: 1.5; }
+    .tabs { flex-wrap: wrap; justify-content: center; }
     .testimonial-card { flex-direction: column; }
-    .review-image { flex: 0 0 auto; height: 300px; }
-    .review-content { padding: 40px 30px; }
+    .review-image { flex: 0 0 auto; min-height: 250px; width: 100%; }
+    .review-content { padding: 20px 10px; }
 }
 
 @media (max-width: 480px) {
