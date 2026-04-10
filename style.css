@@ -627,9 +627,10 @@ h1, h2, h3, h4, h5 {
     .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
     .banner-content { flex-direction: column; gap: 20px; text-align: center; }
     .sticky-mobile-bar { display: flex; }
-    .hero { padding-bottom: 120px; padding-top: 40px; } /* Space for sticky bar */
-    .hero h1 { font-size: 2rem; }
-    .hero h1.highlight { font-size: 1.8rem; }
+    .hero { padding-bottom: 80px; padding-top: 20px; min-height: auto; } /* tighter padding */
+    .hero h1 { font-size: 1.75rem; line-height: 1.1; margin-bottom: 10px; }
+    .hero h1.highlight { font-size: 1.6rem; margin-bottom: 10px; }
+    .hero-subtext { font-size: 1rem; margin-bottom: 15px; }
     .hero-badges { 
         grid-template-columns: repeat(2, 1fr);
         justify-content: center;
@@ -652,10 +653,10 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 480px) {
     .grid-4, .grid-5 { grid-template-columns: 1fr; }
     .portfolio-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 1.8rem; }
-    .hero h1.highlight { font-size: 1.6rem; }
-    .hero-badges { gap: 8px; }
-    .hero-badge { font-size: 0.75rem; padding: 8px 10px; }
+    .hero h1 { font-size: 1.5rem; }
+    .hero h1.highlight { font-size: 1.4rem; }
+    .hero-badges { gap: 8px; margin-bottom: 15px; }
+    .hero-badge { font-size: 0.7rem; padding: 6px 8px; }
 }
 
 /* MICRO-INTERACTIONS & ENTRANCE ANIMATIONS */
