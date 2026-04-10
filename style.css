@@ -623,3 +623,42 @@ h1, h2, h3, h4, h5 {
     from { opacity: 0; transform: translateX(80px); }
     to { opacity: 1; transform: translateX(0); }
 }
+
+/* Form Social Proof Strip */
+.form-trust-proof {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    text-align: center;
+}
+.confidential {
+    font-size: 0.82rem;
+    color: #888;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'Inter', sans-serif;
+}
+.confidential i { width: 14px; height: 14px; opacity: 0.7; }
+.proof-items-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.proof-mini {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.mini-stars { color: #f59e0b; font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 4px; }
+.proof-mini strong { display: block; font-size: 0.95rem; color: var(--primary-blue); line-height: 1.2; font-family: 'Outfit', sans-serif; }
+.proof-mini span { font-size: 0.7rem; color: #777; line-height: 1.2; font-family: 'Inter', sans-serif; }
+
+@media (max-width: 480px) {
+    .proof-items-row { flex-wrap: wrap; }
+    .proof-mini { flex: 0 0 45%; margin-bottom: 15px; }
+}
