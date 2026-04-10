@@ -53,19 +53,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 5. FORM SUBMISSION HANDLING (HERO & BOTTOM)
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-        const formId = e.target.id;
+        const form = e.target;
+        const formId = form.id;
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerText;
+
+        // Visual feedback
+        submitBtn.innerText = "Sending...";
+        submitBtn.disabled = true;
+
+        try {
+            // Using a dedicated endpoint for hello@theneostudio.com
+            // Note: For production use, replace this ID with your unique Formspree ID
+            const response = await fetch("https://formspree.io/f/mvgzvpzz", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Show Success Modal
+                document.getElementById('success-modal').style.display = 'flex';
+                form.reset();
+            } else {
+                alert("Oops! There was a problem submitting your form. Please try again.");
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("Connection error. Please check your internet and try again.");
+        } finally {
+            submitBtn.innerText = originalBtnText;
+            submitBtn.disabled = false;
+        }
         
         // Push conversion event to GTM
         window.dataLayer.push({
             'event': 'form_submission',
             'form_id': formId
         });
-
-        // Show Success Modal
-        document.getElementById('success-modal').style.display = 'flex';
-        e.target.reset();
     };
 
     document.getElementById('hero-form').addEventListener('submit', handleFormSubmit);
@@ -79,15 +109,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. PORTFOLIO DATA & TABS
     const portfolioData = [
         // LIVING ROOM
-        { id: 1, category: 'Living Room', caption: 'Whitefield | 3BHK Apartment | 40 Days', img: 'hero_luxury_living_room_1775745353880.png' },
-        { id: 2, category: 'Living Room', caption: 'Koramangala | 3BHK Apartment | 42 Days', img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80' },
-        { id: 3, category: 'Living Room', caption: 'Jayanagar | 4BHK Villa | 45 Days', img: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800&q=80' },
+        { id: 1, category: 'Living Room', caption: 'Whitefield · 3BHK Apartment · ₹9L · Delivered in 40 Days', img: 'hero_luxury_living_room_1775745353880.png' },
+        { id: 2, category: 'Living Room', caption: 'Koramangala · 4BHK Villa · ₹22L · Delivered in 44 Days', img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80' },
+        { id: 3, category: 'Living Room', caption: 'Jayanagar | 4BHK Villa | ₹25L | 45 Days', img: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800&q=80' },
         { id: 4, category: 'Living Room', caption: 'Indiranagar | 3BHK Apartment | 35 Days', img: 'https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&q=80' },
         { id: 5, category: 'Living Room', caption: 'Whitefield | 4BHK Villa | 50 Days', img: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80' },
         { id: 6, category: 'Living Room', caption: 'HSR Layout | 3BHK Apartment | 40 Days', img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80' },
 
         // BEDROOM
-        { id: 7, category: 'Bedroom', caption: 'Indiranagar | 4BHK Villa | 45 Days', img: 'modern_bedroom_interior_1775745376504.png' },
+        { id: 7, category: 'Bedroom', caption: 'Indiranagar · 3BHK Apartment · ₹7L · Delivered in 35 Days', img: 'modern_bedroom_interior_1775745376504.png' },
         { id: 8, category: 'Bedroom', caption: 'Malleswaram | 3BHK Apartment | 30 Days', img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80' },
         { id: 9, category: 'Bedroom', caption: 'Hebbal | 4BHK Duplex | 35 Days', img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800&q=80' },
         { id: 10, category: 'Bedroom', caption: 'Bellandur | 3BHK Apartment | 30 Days', img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80' },
@@ -259,7 +289,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     const updateCount = () => {
                         count += increment;
-                        const suffix = target === 45 ? '' : '+';
+                        let suffix = '+';
+                        if (target === 45) suffix = '';
+                        if (target === 25) suffix = '';
+
                         if (count < target) {
                             entry.target.innerText = Math.ceil(count).toLocaleString() + suffix;
                             requestAnimationFrame(updateCount);

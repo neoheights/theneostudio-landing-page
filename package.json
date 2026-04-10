@@ -1,0 +1,15 @@
+{
+  "name": "neostudio-landing-page",
+  "version": "1.0.0",
+  "description": "Neo Studio Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y http-server -p 3000 -c-1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
