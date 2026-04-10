@@ -311,6 +311,22 @@ h1, h2, h3, h4, h5 {
     position: relative;
     border-top: 4px solid transparent;
 }
+.process-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background: var(--accent-yellow);
+    color: var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(199, 214, 26, 0.4);
+}
 .process-card:hover { 
     transform: translateY(-15px) scale(1.03); 
     box-shadow: 0 25px 50px rgba(0,0,0,0.1); 
