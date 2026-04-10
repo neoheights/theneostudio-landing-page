@@ -233,11 +233,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="review-content">
                 <div class="review-stars">
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
-                    <i data-lucide="star"></i>
+                    <i data-lucide="star" fill="currentColor" stroke="currentColor"></i>
+                    <i data-lucide="star" fill="currentColor" stroke="currentColor"></i>
+                    <i data-lucide="star" fill="currentColor" stroke="currentColor"></i>
+                    <i data-lucide="star" fill="currentColor" stroke="currentColor"></i>
+                    <i data-lucide="star" fill="currentColor" stroke="currentColor"></i>
                 </div>
                 <p class="review-text">${t.text}</p>
                 <div class="review-author">

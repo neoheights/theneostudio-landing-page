@@ -447,7 +447,7 @@ h1, h2, h3, h4, h5 {
     gap: 4px; 
     color: var(--accent-yellow); 
 }
-.review-stars i { fill: var(--accent-yellow); width: 22px; height: 22px; stroke: var(--accent-yellow); }
+.review-stars i { fill: var(--accent-yellow) !important; stroke: var(--accent-yellow) !important; width: 22px; height: 22px; }
 
 .review-text { 
     font-size: 1.4rem; 
