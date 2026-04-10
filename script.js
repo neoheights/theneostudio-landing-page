@@ -142,9 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
         filtered.forEach((item) => {
             const div = document.createElement('div');
             div.className = 'portfolio-card fade-in active';
+            div.onclick = () => openLightbox(item.img, item.caption);
             div.innerHTML = `
-                <img src="${item.img}" alt="${item.caption}">
-                <div class="card-overlay" onclick="openLightbox('${item.img}', '${item.caption}')">
+                <div class="portfolio-img-box">
+                    <img src="${item.img}" alt="${item.caption}">
+                </div>
+                <div class="portfolio-info">
                     <p>${item.caption}</p>
                 </div>
             `;

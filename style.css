@@ -48,6 +48,7 @@ h1, h2, h3, h4, h5 {
 .fade-in-right.active { opacity: 1; transform: translateX(0); }
 .scroll-reveal { opacity: 0; transform: translateY(20px); transition: var(--transition); }
 .scroll-reveal.active { opacity: 1; transform: translateY(0); }
+.text-logo-yellow { color: var(--accent-yellow); }
 
 /* 1. HERO SECTION */
 .hero {
@@ -266,16 +267,48 @@ h1, h2, h3, h4, h5 {
     transition: var(--transition);
 }
 .tab-btn.active, .tab-btn:hover { background: var(--primary-blue); color: var(--white); border-color: var(--primary-blue); }
-.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.portfolio-card { position: relative; border-radius: var(--border-radius); overflow: hidden; aspect-ratio: 4/3; cursor: pointer; }
-.portfolio-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.portfolio-card:hover img { transform: scale(1.1); }
-.card-overlay {
-    position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    color: var(--white); opacity: 0; transition: var(--transition);
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.portfolio-card { 
+    background: rgba(199, 214, 26, 0.08); /* Light logo yellow */
+    border-radius: 16px; 
+    overflow: hidden; 
+    cursor: pointer; 
+    transition: var(--transition);
+    border: 1px solid rgba(199, 214, 26, 0.15);
+    display: flex;
+    flex-direction: column;
 }
-.portfolio-card:hover .card-overlay { opacity: 1; }
+.portfolio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(199, 214, 26, 0.2);
+    background: rgba(199, 214, 26, 0.12);
+}
+.portfolio-img-box {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+.portfolio-card img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.6s ease; 
+}
+.portfolio-card:hover img { transform: scale(1.1); }
+.portfolio-info {
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.portfolio-info p {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    line-height: 1.4;
+}
 
 /* Lightbox */
 .lightbox {
