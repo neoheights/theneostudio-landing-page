@@ -232,16 +232,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${t.img}" alt="${t.name}">
             </div>
             <div class="review-content">
-                <div class="rating">${t.stars}</div>
-                <p class="review-text">"${t.text}"</p>
+                <div class="review-stars">
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                    <i data-lucide="star"></i>
+                </div>
+                <p class="review-text">${t.text}</p>
                 <div class="review-author">
-                    <h5>${t.name}</h5>
-                    <span>${t.area}</span>
+                    <h4>${t.name}</h4>
+                    <p>${t.area}</p>
                 </div>
             </div>
         `;
         slider.appendChild(card);
     });
+    lucide.createIcons();
 
     let currentSlide = 0;
     document.getElementById('nextBtn').addEventListener('click', () => {
