@@ -11,22 +11,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
+    <!-- Favicon to fix 404 error -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    
     <link rel="stylesheet" href="style.css">
     
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons (Self-hosted to avoid tracking blocked warnings) -->
+    <script src="lucide.min.js"></script>
 
-    <!-- Google Tag Manager (Placeholder ID per brief) -->
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    })(window,document,'script','dataLayer','GTM-N5JR5R8T');</script>
+    <!-- End Google Tag Manager -->
 </head>
 <body>
 
-    <!-- GTM Body Implementation (Placeholder) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5JR5R8T"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <main>
         <!-- 1. HERO SECTION -->
@@ -39,7 +45,7 @@
                     <p class="hero-subtext">Trusted home interior designers in Bangalore with 25 years of experience | Transparent pricing, no hidden costs | 10% Limited Period Offer</p>
                     <div class="hero-badges">
                         <div class="hero-badge"><i data-lucide="award"></i> 25 Years of Experience</div>
-                        <div class="hero-badge glow"><i data-lucide="percent"></i> 10% Limited Offer in April</div>
+                        <div class="hero-badge glow">10% Limited Offer in April</div>
                         <div class="hero-badge"><i data-lucide="shield-check"></i> Transparent Pricing</div>
                         <div class="hero-badge"><i data-lucide="star" style="color: #FFD700; fill: #FFD700;"></i> 4.9 Google Rating</div>
                     </div>
@@ -174,6 +180,9 @@
                         <p>On-time delivery, guaranteed</p>
                     </div>
                 </div>
+                 <div class="process-cta" style="text-align: center; margin-top: 50px;">
+                    <button onclick="document.getElementById('name').focus(); document.documentElement.scrollIntoView({behavior: 'smooth'})" class="btn-primary" style="max-width: 350px;">Get My Free Quote &rarr;</button>
+                </div>
             </div>
         </section>
 
@@ -246,8 +255,8 @@
                         <div class="accordion-content"><p>We are delighted to offer this exclusive flat 10% discount across all our standard full-home interior packages booked within this month. It is our way of celebrating design access. Please speak directly with one of our principal consultants during your free consultation so we can perfectly apply this benefit to your bespoke design quotation.</p></div>
                     </div>
                     <div class="accordion-item scroll-reveal" style="transition-delay: 500ms;">
-                        <button class="accordion-header"><span>Do you provide pricing upfront? Are you interior designers in Bangalore with price transparency?</span><i data-lucide="plus"></i></button>
-                        <div class="accordion-content"><p>Absolutely. We are interior designers in Bangalore with price transparency at our core. We provide a comprehensive, itemized cost breakdown during the design phase itself. Every square foot, every material choice, and every finish is priced out so you have a final, fixed interior design cost before execution begins. No surprises, no hidden escalations.</p></div>
+                        <button class="accordion-header"><span>Do you share the full interior design cost before work starts?</span><i data-lucide="plus"></i></button>
+                        <div class="accordion-content"><p>Yes, 100%. We believe transparency is the foundation of trust. We provide a comprehensive, itemized cost breakdown during the design phase itself. Every square foot, material choice, and finish is priced out so you have a final, fixed interior design cost before we start execution. No hidden charges, no surprises.</p></div>
                     </div>
                 </div>
             </div>
@@ -356,6 +365,8 @@
             <button onclick="closeModal()" class="btn-primary" style="margin-top: 30px;">CLOSE</button>
         </div>
     </div>
+
+
 
     <script src="script.js"></script>
     <script>lucide.createIcons();</script>

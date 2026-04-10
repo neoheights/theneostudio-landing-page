@@ -86,7 +86,11 @@ h1, h2, h3, h4, h5 {
 
 /* Hero Badges */
 .hero-badges {
-    display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 12px;
+    margin-bottom: 25px;
+    width: fit-content;
 }
 .hero-badge {
     display: flex; align-items: center; gap: 8px;
@@ -592,8 +596,14 @@ h1, h2, h3, h4, h5 {
     .hero { padding-bottom: 120px; padding-top: 40px; } /* Space for sticky bar */
     .hero h1 { font-size: 2rem; }
     .hero h1.highlight { font-size: 1.8rem; }
-    .hero-badges { justify-content: center; }
-    .hero-badge { font-size: 0.75rem; padding: 6px 10px; }
+    .hero-badges { 
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        margin: 0 auto 20px;
+        width: 100%;
+        max-width: 500px;
+    }
+    .hero-badge { font-size: 0.85rem; padding: 10px 12px; justify-content: center; }
     .form-container { padding: 30px 20px; margin: 0 10px; width: calc(100% - 20px); }
     .testimonial-card { padding: 40px 20px; margin: 10px; text-align: center; align-items: center; }
     .review-stars { justify-content: center; margin-bottom: 15px; }
@@ -610,8 +620,8 @@ h1, h2, h3, h4, h5 {
     .portfolio-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 1.8rem; }
     .hero h1.highlight { font-size: 1.6rem; }
-    .hero-badges { gap: 10px; }
-    .hero-badge { width: 100%; justify-content: center; }
+    .hero-badges { gap: 8px; }
+    .hero-badge { font-size: 0.75rem; padding: 8px 10px; }
 }
 
 /* MICRO-INTERACTIONS & ENTRANCE ANIMATIONS */

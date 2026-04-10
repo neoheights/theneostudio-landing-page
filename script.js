@@ -52,12 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. FORM SUBMISSION HANDLING (HERO & BOTTOM)
+    // 5. FORM SUBMISSION HANDLING (DUMMY MODE)
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
         const formId = form.id;
-        const formData = new FormData(form);
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn.innerText;
 
@@ -65,37 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerText = "Sending...";
         submitBtn.disabled = true;
 
-        try {
-            // Using a dedicated endpoint for hello@theneostudio.com
-            // Note: For production use, replace this ID with your unique Formspree ID
-            const response = await fetch("https://formspree.io/f/mvgzvpzz", {
-                method: "POST",
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                // Show Success Modal
-                document.getElementById('success-modal').style.display = 'flex';
-                form.reset();
-            } else {
-                alert("Oops! There was a problem submitting your form. Please try again.");
-            }
-        } catch (error) {
-            console.error("Submission error:", error);
-            alert("Connection error. Please check your internet and try again.");
-        } finally {
+        // Simulate network delay
+        setTimeout(() => {
+            // Show Success Modal (Dummy mode - no actual request sent to avoid 404)
+            document.getElementById('success-modal').style.display = 'flex';
+            form.reset();
+            
             submitBtn.innerText = originalBtnText;
             submitBtn.disabled = false;
-        }
-        
-        // Push conversion event to GTM
-        window.dataLayer.push({
-            'event': 'form_submission',
-            'form_id': formId
-        });
+
+            // Push conversion event to GTM
+            window.dataLayer.push({
+                'event': 'form_submission',
+                'form_id': formId
+            });
+        }, 1000);
     };
 
     document.getElementById('hero-form').addEventListener('submit', handleFormSubmit);
