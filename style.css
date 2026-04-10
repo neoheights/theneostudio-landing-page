@@ -509,6 +509,7 @@ h1, h2, h3, h4, h5 {
 
 /* 7. FAQ */
 .faq { padding: 100px 0; background-color: var(--white); }
+.faq .section-title { color: var(--primary-blue); }
 .accordion { max-width: 850px; margin: 0 auto; }
 .accordion-item { 
     background: var(--light-grey); 
