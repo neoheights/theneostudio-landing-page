@@ -52,33 +52,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. FORM SUBMISSION HANDLING (DUMMY MODE)
+    // 5. FORM SUBMISSION HANDLING (GOOGLE FORMS INTEGRATION)
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
         const formId = form.id;
+        const formData = new FormData(form);
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn.innerText;
 
-        // Visual feedback
+        // Visual feedback (Sending state)
         submitBtn.innerText = "Sending...";
         submitBtn.disabled = true;
 
-        // Simulate network delay
-        setTimeout(() => {
-            // Show Success Modal (Dummy mode - no actual request sent to avoid 404)
+        // Map budget values from HTML value to Google Forms exact string
+        const budgetMap = {
+            '3-5L': '₹3L - ₹5L',
+            '5-10L': '₹5L - ₹10L',
+            '10-15L': '₹10L - ₹15L',
+            '15L+': '₹15L+'
+        };
+        const rawBudget = formData.get('budget');
+        const mappedBudget = budgetMap[rawBudget] || rawBudget;
+
+        // Construct Google Forms payload
+        const googleFormData = new URLSearchParams();
+        googleFormData.append('entry.301260111', formData.get('name') || '');
+        googleFormData.append('entry.1788060447', formData.get('phone') || '');
+        googleFormData.append('entry.852339436', mappedBudget || '');
+
+        try {
+            // Send data via Google Forms POST quietly (no-cors)
+            await fetch("https://docs.google.com/forms/d/e/1FAIpQLSeqIJ1eMi0aUfGk05c1kUQPwm6-C8dX9-LNfjRb-oj0GoAiPA/formResponse", {
+                method: "POST",
+                body: googleFormData,
+                mode: "no-cors"
+            });
+
+            // If we reach here, it successfully sent (since no-cors hides errors anyway)
+            // Show Success Modal
             document.getElementById('success-modal').style.display = 'flex';
             form.reset();
             
-            submitBtn.innerText = originalBtnText;
-            submitBtn.disabled = false;
-
             // Push conversion event to GTM
             window.dataLayer.push({
                 'event': 'form_submission',
                 'form_id': formId
             });
-        }, 1000);
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("Connection error. Please check your internet and try again.");
+        } finally {
+            // Restore button state
+            submitBtn.innerText = originalBtnText;
+            submitBtn.disabled = false;
+        }
     };
 
     document.getElementById('hero-form').addEventListener('submit', handleFormSubmit);
