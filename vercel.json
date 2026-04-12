@@ -1,5 +1,18 @@
 {
   "version": 2,
   "public": true,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "theneostudio-landing-page.vercel.app"
+        }
+      ],
+      "destination": "https://interior.theneostudio.com/$1",
+      "permanent": true
+    }
+  ]
 }
