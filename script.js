@@ -312,7 +312,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         count += increment;
                         let suffix = '+';
                         if (target === 45) suffix = '';
-                        if (target === 25) suffix = '';
 
                         if (count < target) {
                             entry.target.innerText = Math.ceil(count).toLocaleString() + suffix;
