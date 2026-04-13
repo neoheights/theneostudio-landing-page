@@ -329,4 +329,25 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.scroll-reveal, .fade-in, .fade-in-right, .counter').forEach(el => {
         observer.observe(el);
     });
+
+    // 11. ASSET PROTECTION (Disable Right-click & Common Shortcuts)
+    // Part of the "protecting site assets" goal from session 37b1634e
+    document.addEventListener('contextmenu', (e) => {
+        if (e.target.tagName === 'IMG' || e.target.closest('.video-container')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        // Disable Ctrl+S, Ctrl+U, Ctrl+Shift+I, Ctrl+Shift+C
+        if (
+            (e.ctrlKey && (e.key === 's' || e.key === 'u')) ||
+            (e.ctrlKey && e.shiftKey && (e.key === 'i' || e.key === 'I' || e.key === 'c' || e.key === 'C' || e.key === 'j' || e.key === 'J')) ||
+            (e.key === 'F12')
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
 });
