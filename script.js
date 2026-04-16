@@ -120,44 +120,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. PORTFOLIO DATA & TABS
     const portfolioData = [
         // LIVING ROOM
-        { id: 1, category: 'Living Room', caption: 'Whitefield · 3BHK Apartment · ₹9L · Delivered in 40 Days', img: 'hero_luxury_living_room_1775745353880.png' },
-        { id: 2, category: 'Living Room', caption: 'Koramangala · 4BHK Villa · ₹22L · Delivered in 44 Days', img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80' },
-        { id: 3, category: 'Living Room', caption: 'Jayanagar · 4BHK Villa · ₹25L · Delivered in 45 Days', img: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800&q=80' },
-        { id: 4, category: 'Living Room', caption: 'Indiranagar · 3BHK Apartment · ₹11L · Delivered in 35 Days', img: 'https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&q=80' },
-        { id: 5, category: 'Living Room', caption: 'Whitefield · 4BHK Villa · ₹24L · Delivered in 50 Days', img: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80' },
-        { id: 6, category: 'Living Room', caption: 'HSR Layout · 3BHK Apartment · ₹9.5L · Delivered in 40 Days', img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80' },
+        { id: 1, category: 'Living Room', caption: 'Whitefield, Bangalore · Completed in 40 Days', img: 'hero_luxury_living_room_1775745353880.png' },
+        { id: 2, category: 'Living Room', caption: 'Koramangala, Bangalore · Completed in 44 Days', img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80' },
+        { id: 3, category: 'Living Room', caption: 'Jayanagar, Bangalore · Completed in 45 Days', img: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800&q=80' },
+        { id: 4, category: 'Living Room', caption: 'Indiranagar, Bangalore · Completed in 35 Days', img: 'https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&q=80' },
+        { id: 5, category: 'Living Room', caption: 'Whitefield, Bangalore · Completed in 50 Days', img: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80' },
+        { id: 6, category: 'Living Room', caption: 'HSR Layout, Bangalore · Completed in 40 Days', img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80' },
 
         // BEDROOM
-        { id: 7, category: 'Bedroom', caption: 'Indiranagar · 3BHK Apartment · ₹7L · Delivered in 35 Days', img: 'modern_bedroom_interior_1775745376504.png' },
-        { id: 8, category: 'Bedroom', caption: 'Malleswaram · 3BHK Apartment · ₹8.5L · Delivered in 30 Days', img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80' },
-        { id: 9, category: 'Bedroom', caption: 'Hebbal · 4BHK Duplex · ₹10.5L · Delivered in 35 Days', img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800&q=80' },
-        { id: 10, category: 'Bedroom', caption: 'Bellandur · 3BHK Apartment · ₹8L · Delivered in 30 Days', img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80' },
-        { id: 11, category: 'Bedroom', caption: 'JP Nagar · 3BHK Apartment · ₹7.8L · Delivered in 28 Days', img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80' },
-        { id: 12, category: 'Bedroom', caption: 'Whitefield · Master Bedroom · ₹3.5L · Delivered in 30 Days', img: 'https://images.unsplash.com/photo-1558211583-d26f610c1eb1?w=800&q=80' },
+        { id: 7, category: 'Bedroom', caption: 'Indiranagar, Bangalore · Completed in 35 Days', img: 'modern_bedroom_interior_1775745376504.png' },
+        { id: 8, category: 'Bedroom', caption: 'Malleswaram, Bangalore · Completed in 30 Days', img: 'bd2.png' },
+        { id: 9, category: 'Bedroom', caption: 'Hebbal, Bangalore · Completed in 35 Days', img: 'bd3.jpg' },
+        { id: 10, category: 'Bedroom', caption: 'Bellandur, Bangalore · Completed in 30 Days', img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80' },
+        { id: 11, category: 'Bedroom', caption: 'JP Nagar, Bangalore · Completed in 28 Days', img: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80' },
+        { id: 12, category: 'Bedroom', caption: 'Whitefield, Bangalore · Completed in 30 Days', img: 'bd6.png' },
 
         // KITCHEN
-        { id: 13, category: 'Kitchen', caption: 'HSR Layout · Modular Kitchen · ₹2.8L · Delivered in 30 Days', img: 'modular_kitchen_interior_1775745393866.png' },
-        { id: 14, category: 'Kitchen', caption: 'Marathahalli · Modular Kitchen · ₹2.5L · Delivered in 25 Days', img: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&q=80' },
-        { id: 15, category: 'Kitchen', caption: 'Bellandur · Open Kitchen Setup · ₹3.2L · Delivered in 30 Days', img: 'https://images.unsplash.com/photo-1556185781-a47769abb7ee?w=800&q=80' },
-        { id: 16, category: 'Kitchen', caption: 'Yelahanka · Island Kitchen · ₹4.2L · Delivered in 35 Days', img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80' },
-        { id: 17, category: 'Kitchen', caption: 'Sarjapur · Minimalist Kitchen · ₹2.2L · Delivered in 20 Days', img: 'modular_kitchen_interior_1775745393866.png' },
-        { id: 18, category: 'Kitchen', caption: 'KR Puram · L-Shaped Kitchen · ₹2.6L · Delivered in 25 Days', img: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&q=80' },
+        { id: 13, category: 'Kitchen', caption: 'HSR Layout, Bangalore · Completed in 30 Days', img: 'modular_kitchen_interior_1775745393866.png' },
+        { id: 14, category: 'Kitchen', caption: 'Marathahalli, Bangalore · Completed in 25 Days', img: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&q=80' },
+        { id: 15, category: 'Kitchen', caption: 'Bellandur, Bangalore · Completed in 30 Days', img: 'kt3.png' },
+        { id: 16, category: 'Kitchen', caption: 'Yelahanka, Bangalore · Completed in 35 Days', img: 'kt4.jpg' },
+        { id: 17, category: 'Kitchen', caption: 'Sarjapur, Bangalore · Completed in 20 Days', img: 'modular_kitchen_interior_1775745393866.png' },
+        { id: 18, category: 'Kitchen', caption: 'KR Puram, Bangalore · Completed in 25 Days', img: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&q=80' },
 
         // BATHROOM
-        { id: 19, category: 'Bathroom', caption: 'Yeshwanthpur · Luxury Bath · ₹1.2L · Delivered in 20 Days', img: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80' },
-        { id: 20, category: 'Bathroom', caption: 'RT Nagar · Master Bath · ₹1.5L · Delivered in 22 Days', img: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80' },
-        { id: 21, category: 'Bathroom', caption: 'JP Nagar · Guest Bath · ₹0.8L · Delivered in 18 Days', img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80' },
-        { id: 22, category: 'Bathroom', caption: 'Sahakar Nagar · Double Vanity · ₹1.8L · Delivered in 25 Days', img: 'bt4.png' },
-        { id: 23, category: 'Bathroom', caption: 'Kengeri · Walk-in Shower · ₹1.1L · Delivered in 20 Days', img: 'bt5.png' },
-        { id: 24, category: 'Bathroom', caption: 'BTM Layout · Modern Bath · ₹0.9L · Delivered in 22 Days', img: 'bt6.png' },
+        { id: 19, category: 'Bathroom', caption: 'Yeshwanthpur, Bangalore · Completed in 20 Days', img: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80' },
+        { id: 20, category: 'Bathroom', caption: 'RT Nagar, Bangalore · Completed in 22 Days', img: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80' },
+        { id: 21, category: 'Bathroom', caption: 'JP Nagar, Bangalore · Completed in 18 Days', img: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80' },
+        { id: 22, category: 'Bathroom', caption: 'Sahakar Nagar, Bangalore · Completed in 25 Days', img: 'bt4.png' },
+        { id: 23, category: 'Bathroom', caption: 'Kengeri, Bangalore · Completed in 20 Days', img: 'bt5.png' },
+        { id: 24, category: 'Bathroom', caption: 'BTM Layout, Bangalore · Completed in 22 Days', img: 'bt6.png' },
 
         // FULL HOME
-        { id: 25, category: 'Full Home', caption: 'Kanakapura · 3BHK Full Home · ₹14L · Delivered in 45 Days', img: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80' },
-        { id: 26, category: 'Full Home', caption: 'Whitefield · 4BHK Duplex · ₹28L · Delivered in 50 Days', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80' },
-        { id: 27, category: 'Full Home', caption: 'Sarjapur · 3BHK Apartment · ₹12L · Delivered in 40 Days', img: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80' },
-        { id: 28, category: 'Full Home', caption: 'Electronic City · 3BHK Villa · ₹22L · Delivered in 45 Days', img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80' },
-        { id: 29, category: 'Full Home', caption: 'Majestic · 4BHK Renovation · ₹16L · Delivered in 50 Days', img: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80' },
-        { id: 30, category: 'Full Home', caption: 'Banashankari · 3BHK Interiors · ₹11L · Delivered in 42 Days', img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80' }
+        { id: 25, category: 'Full Home', caption: 'Kanakapura, Bangalore · Completed in 45 Days', img: 'l1.png' },
+        { id: 26, category: 'Full Home', caption: 'Whitefield, Bangalore · Completed in 50 Days', img: 'l2.jpg' },
+        { id: 27, category: 'Full Home', caption: 'Sarjapur, Bangalore · Completed in 40 Days', img: 'l3.jpg' },
+        { id: 28, category: 'Full Home', caption: 'Electronic City, Bangalore · Completed in 45 Days', img: 'l4.jpg' },
+        { id: 29, category: 'Full Home', caption: 'Majestic, Bangalore · Completed in 50 Days', img: 'l5.jpg' },
+        { id: 30, category: 'Full Home', caption: 'Banashankari, Bangalore · Completed in 42 Days', img: 'l6.png' }
     ];
 
     const portfolioGrid = document.getElementById('portfolio-grid');
@@ -349,5 +349,17 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             return false;
         }
+    });
+
+    // 4. WHY NEO SEARCH SPOTLIGHT EFFECT
+    const whyCards = document.querySelectorAll('.why-item');
+    whyCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
     });
 });
