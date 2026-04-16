@@ -666,25 +666,41 @@ h1, h2, h3, h4, h5 {
 
 /* WHY THE NEO STUDIO SECTION */
 .why-neo {
-    padding: 100px 0;
+    padding: 40px 0 100px 0;
     background-color: #f0f4ff; /* Light logo blue tint */
     overflow: hidden;
     position: relative;
 }
 
 .why-title {
-    color: var(--accent-yellow) !important;
-    line-height: 1.3;
-    font-size: 3.2rem;
-    margin-bottom: 45px; /* Increased to push subheadline lower */
-    text-shadow: 2px 2px 4px rgba(0, 34, 124, 0.15);
+    color: var(--primary-blue) !important;
+    line-height: 1.2;
+    font-size: 2.8rem;
+    margin-bottom: 25px; 
     text-align: left;
+}
+
+.brand-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.brand-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-yellow);
+    border-radius: 2px;
 }
 
 .why-neo .section-subtitle {
     color: var(--primary-blue);
     opacity: 0.8;
-    margin-bottom: 60px;
+    margin-top: 0;
+    margin-bottom: 50px;
     text-align: left; /* Aligned to left */
     margin-left: 0;
 }
