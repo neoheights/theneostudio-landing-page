@@ -81,8 +81,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .hero-text { flex: 1; }
-.hero h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 5px; letter-spacing: -0.02em; }
-.hero h1.highlight { color: var(--accent-yellow); font-size: 2.8rem; margin-bottom: 5px; text-shadow: 0 4px 15px rgba(199, 214, 26, 0.3); }
+.hero h1 { font-size: 3.2rem; line-height: 1.1; margin-bottom: 10px; letter-spacing: -0.02em; }
+.hero-highlight-text { color: var(--accent-yellow); font-size: 3.2rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; letter-spacing: -0.02em; }
 .hero-subtext { font-size: 1.15rem; margin-bottom: 25px; font-weight: 500; opacity: 0.95; }
 
 /* Hero Badges */
@@ -630,8 +630,8 @@ h1, h2, h3, h4, h5 {
     .banner-content { flex-direction: column; gap: 20px; text-align: center; }
     .sticky-mobile-bar { display: flex; }
     .hero { padding-bottom: 80px; padding-top: 20px; min-height: auto; } /* tighter padding */
-    .hero h1 { font-size: 1.75rem; line-height: 1.1; margin-bottom: 10px; }
-    .hero h1.highlight { font-size: 1.6rem; margin-bottom: 10px; }
+    .hero h1 { font-size: 2rem; line-height: 1.1; margin-bottom: 10px; }
+    .hero-highlight-text { font-size: 2rem; line-height: 1.1; margin-bottom: 15px; }
     .hero-subtext { font-size: 1rem; margin-bottom: 15px; }
     .hero-badges { 
         grid-template-columns: repeat(2, 1fr);
@@ -655,8 +655,8 @@ h1, h2, h3, h4, h5 {
 @media (max-width: 480px) {
     .grid-4, .grid-5 { grid-template-columns: 1fr; }
     .portfolio-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 1.5rem; }
-    .hero h1.highlight { font-size: 1.4rem; }
+    .hero h1 { font-size: 1.6rem; }
+    .hero-highlight-text { font-size: 1.6rem; }
     .hero-badges { gap: 8px; margin-bottom: 15px; }
     .hero-badge { font-size: 0.7rem; padding: 6px 8px; }
 }
