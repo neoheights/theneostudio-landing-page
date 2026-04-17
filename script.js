@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             div.onclick = () => openLightbox(item.img, item.caption);
             div.innerHTML = `
                 <div class="portfolio-img-box">
-                    <img src="${item.img}" alt="${item.caption}">
+                    <img src="${item.img}" alt="${item.category} by Best Interior Designers in Bangalore - ${item.caption}">
                 </div>
                 <div class="portfolio-info">
                     <p>${item.caption}</p>
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.className = 'testimonial-card';
         card.innerHTML = `
             <div class="review-image">
-                <img src="${t.img}" alt="${t.name}">
+                <img src="${t.img}" alt="Testimonial for Home Interior Designers in Bangalore from ${t.name}">
             </div>
             <div class="review-content">
                 <div class="review-stars">
