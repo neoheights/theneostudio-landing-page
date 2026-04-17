@@ -255,7 +255,7 @@ h1, h2, h3, h4, h5 {
 /* 4. PORTFOLIO */
 .portfolio { padding: 80px 0 40px 0; background-color: var(--white); }
 .portfolio .section-title { color: var(--primary-blue); }
-.section-subtitle { text-align: center; max-width: 800px; margin: -50px auto 40px; font-size: 1.15rem; color: var(--dark-grey); opacity: 0.8; font-weight: 500; }
+.section-subtitle { text-align: center; max-width: 800px; margin: 10px auto 40px; font-size: 1.15rem; color: var(--dark-grey); opacity: 0.8; font-weight: 500; }
 .tabs { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
 .tab-btn {
     padding: 10px 24px;
@@ -905,8 +905,9 @@ h1, h2, h3, h4, h5 {
     border-top: 1px solid rgba(0, 34, 124, 0.1);
 }
 
-.pricing-title {
-    margin-bottom: 20px;
+.pricing-section .section-subtitle {
+    margin-top: 0;
+    margin-bottom: 50px;
 }
 
 .pricing-table-container {
