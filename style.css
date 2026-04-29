@@ -215,7 +215,7 @@ h1, h2, h3, h4, h5 {
 }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
 .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; text-align: center; }
-.stat-item h2 { font-size: 2.3rem; color: var(--accent-yellow); margin-bottom: 2px; font-weight: 800; }
+.stat-item span { font-size: 2.3rem; color: var(--accent-yellow); margin-bottom: 2px; font-weight: 800; display: block; }
 .stat-item .price-match i { width: 32px; height: 32px; color: var(--accent-yellow); }
 .stat-item p { font-weight: 600; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; }
 .stats-subline { text-align: center; margin-top: 25px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
@@ -232,7 +232,7 @@ h1, h2, h3, h4, h5 {
     align-items: center;
     color: var(--white);
 }
-.banner-content h2 { font-size: 1.5rem; margin-bottom: 5px; }
+.banner-content .offer-banner-text { font-size: 1.5rem; margin-bottom: 5px; font-weight: 700; }
 .banner-content p { opacity: 0.9; }
 .btn-outline {
     padding: 12px 24px;
@@ -522,7 +522,7 @@ h1, h2, h3, h4, h5 {
 .accordion-item:hover { background: #f8f9fa; box-shadow: var(--shadow-soft); transform: translateX(5px); }
 .accordion-item.expanded { border-left: 4px solid var(--accent-yellow); background: var(--white); box-shadow: var(--shadow-medium); transform: translateX(5px); }
 .accordion-header { width: 100%; padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; background: none; border: none; font-size: 1.2rem; font-weight: 700; text-align: left; cursor: pointer; color: var(--primary-blue); }
-.accordion-header h3 { font-size: inherit; font-weight: inherit; margin: 0; color: inherit; font-family: inherit; }
+.accordion-header span { font-size: inherit; font-weight: inherit; margin: 0; color: inherit; font-family: inherit; }
 .accordion-header i { transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); color: var(--accent-yellow); }
 .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; padding: 0 30px; }
 .accordion-content p { color: var(--dark-grey); line-height: 1.8; font-size: 1.05rem; }
